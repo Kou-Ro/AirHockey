@@ -1,0 +1,42 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build",
+        "command": "/home/kouro/lib/processing-4.3/processing-java",
+        "type": "process",
+        "args": [
+          "--force",
+          "--sketch=${workspaceFolder}",
+          "--output=${workspaceFolder}/build",
+          "--build"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        }
+      },
+      {
+        "label": "Run",
+        "command": "/home/kouro/lib/processing-4.3/processing-java",
+        "type": "process",
+        "args": [
+          "--force",
+          "--sketch=${workspaceFolder}",
+          "--run"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        }
+      }
+    ]
+}

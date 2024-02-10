@@ -3,7 +3,7 @@
     "tasks": [
       {
         "label": "Build",
-        "command": "/home/kouro/lib/processing-4.3/processing-java",
+        "command": "/bin/processing-java",
         "type": "process",
         "args": [
           "--force",
@@ -21,8 +21,27 @@
         }
       },
       {
+        "label": "Export",
+        "command": "/bin/processing-java",
+        "type": "process",
+        "args": [
+          "--force",
+          "--sketch=${workspaceFolder}",
+          "--output=${workspaceFolder}/build",
+          "--export"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        }
+      },
+      {
         "label": "Run",
-        "command": "/home/kouro/lib/processing-4.3/processing-java",
+        "command": "/bin/processing-java",
         "type": "process",
         "args": [
           "--force",

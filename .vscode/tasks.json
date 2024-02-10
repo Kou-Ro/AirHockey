@@ -12,12 +12,12 @@
           "--build"
         ],
         "group": {
-          "kind": "build",
-          "isDefault": true
+          "kind": "test",
+          "isDefault": false
         },
         "presentation": {
           "reveal": "always",
-          "panel": "new"
+          "panel": "shared"
         }
       },
       {
@@ -31,12 +31,12 @@
           "--export"
         ],
         "group": {
-          "kind": "build",
-          "isDefault": true
+          "kind": "test",
+          "isDefault": false
         },
         "presentation": {
           "reveal": "always",
-          "panel": "new"
+          "panel": "shared"
         }
       },
       {
@@ -49,13 +49,56 @@
           "--run"
         ],
         "group": {
+          "kind": "test",
+          "isDefault": false
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Copy",
+        "command": "${workspaceFolder}/scripts/copy.sh",
+        "type": "process",
+        "args": [],
+        "group": {
+          "kind": "test",
+          "isDefault": false
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared"
+        }
+      },
+      {
+        "label": "Deploy",
+        "command": "${workspaceFolder}/scripts/deploy.sh",
+        "type": "process",
+        "args": [],
+        "group": {
           "kind": "build",
           "isDefault": true
         },
         "presentation": {
           "reveal": "always",
-          "panel": "new"
+          "panel": "shared"
         }
-      }
+      },
+      {
+        "label": "Execute",
+        "command": "${workspaceFolder}/build/Poker",
+        "type": "process",
+        "args": [],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "reveal": "always",
+          "panel": "shared"
+        }
+      },
+
     ]
 }

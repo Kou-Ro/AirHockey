@@ -18,7 +18,7 @@ void draw() {
     startRoom();
     break;
   case 1:
-    createRoom();
+    createRoom.draw();
     break;
   case 2:
     joinRoom.draw();

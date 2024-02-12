@@ -20,6 +20,7 @@ void createButton() {
 
     if(mousePressed && mouseButton == LEFT){
       mode = 1;
+      createRoom = new CreateRoom(info, this);
     }
   }
   else{

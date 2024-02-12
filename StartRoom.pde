@@ -41,7 +41,7 @@ void joinButton(){
 
     if(mousePressed && mouseButton == LEFT){
       mode = 2;
-      joinRoom = new JoinRoom();
+      joinRoom = new JoinRoom(info);
     }
   }
   else{

@@ -6,6 +6,7 @@ void settings() {
 }
 
 void setup() {
+  frameRate(60);
   info = new Info(windowWidth, windowHeight);
 }
 
@@ -20,7 +21,15 @@ void draw() {
     createRoom();
     break;
   case 2:
-    joinRoom.draw(info);
+    joinRoom.draw();
     break;
   }
+}
+
+void keyPressed(){
+  unmodefirePressed();
+}
+
+void keyReleased(){
+  unmodefireReleased();
 }

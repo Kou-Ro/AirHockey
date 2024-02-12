@@ -8,6 +8,7 @@ void settings() {
 void setup() {
   frameRate(60);
   info = new Info(windowWidth, windowHeight);
+  startRoom = new StartRoom(info);
 }
 
 void draw() {
@@ -15,7 +16,7 @@ void draw() {
 
   switch(mode) {
   case 0:
-    startRoom();
+    startRoom.draw();
     break;
   case 1:
     createRoom.draw();

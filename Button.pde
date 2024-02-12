@@ -25,7 +25,7 @@ class Button{
     this(message, x, y, textWidth(message), textAscent() + textDescent(), bc, mc, dl);
   }
 
-  Button(String message, float x, float y, int w, int h, int bc, int mc){
+  Button(String message, float x, float y, float w, float h, int bc, int mc){
     this(message, x, y, w, h, bc, mc, 60);
   }
 
@@ -34,6 +34,7 @@ class Button{
   }
 
   boolean draw(){
+    textAlign(CENTER, CENTER);
     rectMode(CENTER);
 
     if((mouseX >= x - (w / 2) && mouseX <= x + (w / 2)) && (mouseY >= y - (h / 2) && mouseY <= y + (h / 2))){

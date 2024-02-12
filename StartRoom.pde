@@ -1,56 +1,26 @@
-float buttonWidth = 125, buttonHeight = 30, r = 0; // half of size
-float positionX = 200, positionY = 100;
+class StartRoom{
+  private Info info;
+  private float buttonWidth = 250, buttonHeight = 60, r = 0; // half of size
+  private float positionX = 200, positionY = 100;
+  private Button createRoomButton;
+  private Button joinRoomButton;
 
-void startRoom() {
-  rectMode(RADIUS);
-  textAlign(CENTER, CENTER);
-  textSize(40);
-  createButton();
-  joinButton();
-}
+  StartRoom(Info info){
+    this.info = info;
+    createRoomButton  = new Button("Join Room", info.centerX + positionX, info.centerY + positionY, buttonWidth, buttonHeight, Color.white, Color.black);
+    joinRoomButton = new Button("Create Room", info.centerX - positionX, info.centerY + positionY, buttonWidth, buttonHeight, Color.white, Color.black);
+  }
 
-void createButton() {
-  float buttonCenterX = info.centerX - positionX;
-  float buttonCenterY = info.centerY + positionY;
-
-  if((mouseX >= buttonCenterX - buttonWidth && mouseX <= buttonCenterX + buttonWidth)&&
-  (mouseY >= buttonCenterY - buttonHeight && mouseY <= buttonCenterY + buttonHeight)){
-    fill(Color.lightGray);
-    rect(buttonCenterX, buttonCenterY, buttonWidth, buttonHeight, r);
-
-    if(mousePressed && mouseButton == LEFT){
+  void draw() {
+    textSize(40);
+    if(createRoomButton.draw()){
       mode = 1;
-      createRoom = new CreateRoom(info, this);
+      createRoom = new CreateRoom(info, Poker.this);
     }
-  }
-  else{
-    fill(Color.white);
-    rect(buttonCenterX, buttonCenterY, buttonWidth, buttonHeight, r);
-  }
-  fill(Color.black);
-  text("Create Room", buttonCenterX, buttonCenterY);
-}
-
-void joinButton(){
-  float buttonCenterX = info.centerX + positionX;
-  float buttonCenterY = info.centerY + positionY;
-
-  if((mouseX >= buttonCenterX - buttonWidth && mouseX <= buttonCenterX + buttonWidth)&&
-  (mouseY >= buttonCenterY - buttonHeight && mouseY <= buttonCenterY + buttonHeight)){
-    fill(Color.lightGray);
-    rect(buttonCenterX, buttonCenterY, buttonWidth, buttonHeight, r);
-
-    if(mousePressed && mouseButton == LEFT){
+    if(joinRoomButton.draw()){
       mode = 2;
       joinRoom = new JoinRoom(info);
     }
   }
-  else{
-    fill(Color.white);
-    rect(buttonCenterX, buttonCenterY, buttonWidth, buttonHeight, r);
-  }
-
-  fill(Color.black);
-  text("Join Room", buttonCenterX, buttonCenterY);
 }
 

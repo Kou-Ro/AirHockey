@@ -1,4 +1,5 @@
 Info info;
+StartRoom startRoom;
 CreateRoom createRoom;
 JoinRoom joinRoom;
 int mode = 0; // 0: start, 1: createRoom, 2: joinRoom

@@ -1,17 +1,17 @@
 class JoinRoom {
+  private Info info;
   private String roomIP;
   private String name;
   private char pressedKey = '\0';
   private char sameKeyCount = 0;
   private int mode = 0; // 0: Set name 1: set IP 2: waiting
-  private Info info;
   private Button nameSetButton;
   private Button roomIPSetButton;
 
   JoinRoom(Info info){
+    this.info = info;
     this.roomIP = "";
     this.name = "";
-    this.info = info;
     this.nameSetButton = new Button("Next", info.centerX, info.centerY + 100, Color.white, Color.black);
     this.roomIPSetButton = new Button("Next", info.centerX, info.centerY + 100, Color.white, Color.black);
   }

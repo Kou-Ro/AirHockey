@@ -13,7 +13,7 @@
         ],
         "group": {
           "kind": "test",
-          "isDefault": false
+          "isDefault": true
         },
         "presentation": {
           "reveal": "always",
@@ -32,7 +32,7 @@
         ],
         "group": {
           "kind": "test",
-          "isDefault": false
+          "isDefault": true
         },
         "presentation": {
           "reveal": "always",
@@ -50,7 +50,7 @@
         ],
         "group": {
           "kind": "test",
-          "isDefault": false
+          "isDefault": true
         },
         "presentation": {
           "reveal": "always",
@@ -64,7 +64,7 @@
         "args": [],
         "group": {
           "kind": "test",
-          "isDefault": false
+          "isDefault": true
         },
         "presentation": {
           "reveal": "always",

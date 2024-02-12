@@ -1,13 +1,16 @@
+int windowWidth = 1500;
+int windowHeight = 1000;
+
 void settings() {
   size(windowWidth, windowHeight, P2D);
 }
 
 void setup() {
-  ipAddress = getIP();
+  info = new Info(windowWidth, windowHeight);
 }
 
 void draw() {
-  background(black);
+  background(Color.black);
 
   switch(mode) {
   case 0:
@@ -15,6 +18,9 @@ void draw() {
     break;
   case 1:
     createRoom();
+    break;
+  case 2:
+    joinRoom.draw(info);
     break;
   }
 }

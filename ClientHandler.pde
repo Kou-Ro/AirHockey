@@ -17,6 +17,7 @@ class ClientHandler implements Runnable {
           int id = info.clients.size() + 1;
           info.clients.add(new ClientData(client, data.substring(2), id));
           client.write("I!" + Integer.toString(id) + "\n");
+          client.write("N!" + info.name + "\n");
 
           println("Added a client\nid: " + id);
           break;

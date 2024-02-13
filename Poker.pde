@@ -8,22 +8,25 @@ void settings() {
 void setup() {
   frameRate(60);
   info = new Info(windowWidth, windowHeight);
-  startRoom = new StartRoom(info);
+  setName = new SetName(info);
 }
 
 void draw() {
   background(Color.black);
 
   switch(info.mode) {
-  case 0:
-    startRoom.draw();
-    break;
-  case 1:
-    createRoom.draw();
-    break;
-  case 2:
-    joinRoom.draw();
-    break;
+    case 0:
+      setName.draw();
+      break;
+    case 1:
+      startRoom.draw();
+      break;
+    case 2:
+      createRoom.draw();
+      break;
+    case 3:
+      joinRoom.draw();
+      break;
   }
 }
 
@@ -53,6 +56,12 @@ void clientEvent(Client client){
         info.id = id;
 
         println("id: " + id);
+        break;
+      case "N!":
+        String name = data.substring(2);
+        info.hostName = name;
+
+        println("hostName: " + name);
         break;
       case "E!":
         println("ERRROR");

@@ -7,7 +7,9 @@ class CreateRoom {
     this.info = info;
     server = new Server(Poker.this, 8765);
     println("CreateRoom");
-    info.roomIP = info.ipAddress;
+    info.isHost = true;
+    info.hostIP = info.ipAddress;
+    info.hostName = info.name;
     info.id = 0;
   }
 
@@ -19,12 +21,15 @@ class CreateRoom {
     fill(Color.white);
     text("Room IP Address", info.centerX, info.centerY - 300);
 
-    float ipWidth = textWidth(info.ipAddress);
+    float ipWidth = textWidth(info.ipAddress + "  ");
     float ipHeight = textAscent() + textDescent();
     rect(info.centerX, info.centerY - 200, ipWidth, ipHeight);
 
     fill(Color.black);
     text(info.ipAddress, info.centerX, info.centerY - 200);
+
+    int numOfClients = info.clients.size();
+
   }
 }
 

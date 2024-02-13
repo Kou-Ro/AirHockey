@@ -22,7 +22,7 @@ class Button{
   }
 
   Button(String message, float x, float y, int bc, int mc, int dl){
-    this(message, x, y, textWidth(message), textAscent() + textDescent(), bc, mc, dl);
+    this(message, x, y, textWidth(message + "  "), textAscent() + textDescent(), bc, mc, dl);
   }
 
   Button(String message, float x, float y, float w, float h, int bc, int mc){
@@ -30,7 +30,7 @@ class Button{
   }
 
   Button(String message, float x, float y, int bc, int mc){
-    this(message, x, y, textWidth(message), textAscent() + textDescent(), bc, mc, 60);
+    this(message, x, y, textWidth(message + "  "), textAscent() + textDescent(), bc, mc, 60);
   }
 
   boolean draw(){

@@ -15,11 +15,11 @@ class StartRoom{
     textSize(40);
     if(createRoomButton.draw()){
       createRoom = new CreateRoom(info);
-      info.mode = 1;
+      info.mode = 2;
     }
     if(joinRoomButton.draw()){
       joinRoom = new JoinRoom(info);
-      info.mode = 2;
+      info.mode = 3;
     }
   }
 }

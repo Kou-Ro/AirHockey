@@ -7,9 +7,12 @@ class Info {
   boolean initServer = false;
   boolean initClient = false;
   String ipAddress = "";
-  String roomIP = "";
   String name = "";
+  String hostIP = "";
+  String hostName = "";
   int id;
+  boolean isHost = false;
+  boolean isClient = false;
   List<ClientData> clients = new ArrayList<ClientData>();
 
   Info(int windowWidth, int windowHeight){

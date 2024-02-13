@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import processing.net.*;
 
 Info info;
+SetName setName;
 StartRoom startRoom;
 CreateRoom createRoom;
 JoinRoom joinRoom;

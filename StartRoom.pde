@@ -7,19 +7,19 @@ class StartRoom{
 
   StartRoom(Info info){
     this.info = info;
-    createRoomButton  = new Button("Join Room", info.centerX + positionX, info.centerY + positionY, buttonWidth, buttonHeight, Color.white, Color.black);
-    joinRoomButton = new Button("Create Room", info.centerX - positionX, info.centerY + positionY, buttonWidth, buttonHeight, Color.white, Color.black);
+    createRoomButton  = new Button("Create Room", info.centerX - positionX, info.centerY + positionY, buttonWidth, buttonHeight, Color.white, Color.black);
+    joinRoomButton = new Button("Join Room", info.centerX + positionX, info.centerY + positionY, buttonWidth, buttonHeight, Color.white, Color.black);
   }
 
   void draw() {
     textSize(40);
     if(createRoomButton.draw()){
-      mode = 1;
-      createRoom = new CreateRoom(info, Poker.this);
+      createRoom = new CreateRoom(info);
+      info.mode = 1;
     }
     if(joinRoomButton.draw()){
-      mode = 2;
       joinRoom = new JoinRoom(info);
+      info.mode = 2;
     }
   }
 }

@@ -3,20 +3,15 @@ class CreateRoom {
   private Client client;
   private Info info;
 
-  CreateRoom(Info info, Poker poker){
+  CreateRoom(Info info){
     this.info = info;
-    server = new Server(poker, 8765);
+    server = new Server(Poker.this, 8765);
+    println("CreateRoom");
+    info.roomIP = info.ipAddress;
+    info.id = 0;
   }
 
   void draw(){
-    client = server.available();
-    if(client != null){
-      String data = client.readString();
-      println(data);
-      client.write("Hello, I'm a server");
-      client.stop();
-    }
-
     textAlign(CENTER,CENTER);
     textSize(40);
     rectMode(CENTER);

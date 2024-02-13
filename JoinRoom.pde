@@ -7,6 +7,7 @@ class JoinRoom {
   private int mode = 0; // 0: Set name 1: set IP 2: waiting
   private Button nameSetButton;
   private Button roomIPSetButton;
+  private Client client;
 
   JoinRoom(Info info){
     this.info = info;
@@ -103,12 +104,13 @@ class JoinRoom {
 
     if(roomIPSetButton.draw()){
       info.roomIP = roomIP;
+      client = new Client(Poker.this, info.roomIP, 8765);
+      println("Join Room");
       mode = 2;
     }
   }
 
   void waiting(){
-
   }
 
   void nameAdd(char addKey){

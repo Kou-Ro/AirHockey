@@ -13,6 +13,7 @@ void setup() {
 
 void draw() {
   background(Color.black);
+  noStroke();
 
   switch(info.mode) {
     case 0:

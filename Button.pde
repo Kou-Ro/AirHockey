@@ -64,6 +64,27 @@ class Button{
     return clicked;
   }
 
+  Button overwriteMessage(String message){
+    this.message = message;
+    return this;
+  }
+
+  Button overwriteButtonColor(int bc){
+    this.bc = bc;
+    return this;
+  }
+
+  Button overwriteMessageColor(int mc){
+    this.mc = mc;
+    return this;
+  }
+
+  Button overwriteDarkLevel(int dl){
+    this.dl = dl;
+    return this;
+  }
+
+
   boolean isClicked(){
     return clicked;
   }

@@ -8,6 +8,7 @@ class JoinRoom {
   private Button nameSetButton;
   private Button hostIPSetButton;
   private Client client;
+  private float loadingMisa = 0.0;
 
   JoinRoom(Info info){
     this.info = info;
@@ -72,6 +73,28 @@ class JoinRoom {
   }
 
   void waiting(){
+    fill(Color.white);
+    textAlign(CENTER,CENTER);
+    rectMode(CENTER);
+    textSize(40);
+    text("Waiting for the host to start the game.", info.centerX, info.centerY - 200);
+
+    textSize(60);
+    textAlign(RIGHT, CENTER);
+    text(info.name, info.centerX - 70, info.centerY);
+    textAlign(CENTER, CENTER);
+    text("VS", info.centerX, info.centerY);
+    textAlign(LEFT, CENTER);
+    text(info.hostName, info.centerX + 70, info.centerY);
+
+    strokeWeight(10);
+    stroke(Color.white);
+    noFill();
+    arc(info.centerX, info.centerY + 150, 100, 100, loadingMisa, loadingMisa + PI / 5, OPEN);
+    fill(Color.white);
+    noStroke();
+    loadingMisa += PI / 30;
+    loadingMisa %= TWO_PI;
   }
 
   void ipAdd(char addKey){

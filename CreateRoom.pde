@@ -3,6 +3,7 @@ class CreateRoom {
   private Client client;
   private Info info;
   private Button[] clientButtons = new Button[5];
+  Boolean valid = false;
 
   CreateRoom(Info info){
     this.info = info;
@@ -41,13 +42,34 @@ class CreateRoom {
     textSize(60);
     for(int i = 0; i < 5; i++){
       if(i < numOfClients) {
+        boolean active = info.clients.get(i).active;
         fill(Color.white);
         textSize(60);
         Button clientButton = clientButtons[i];
         clientButton.overwriteMessage(info.clients.get(i).name);
-        clientButton.overwriteButtonColor(Color.white);
-        clientButton.overwriteDarkLevel(60);
-        clientButton.draw();
+        if(active){
+          clientButton.overwriteButtonColor(Color.white);
+          clientButton.overwriteDarkLevel(60);
+        }
+        else{
+          clientButton.overwriteButtonColor(Color.lightGray);
+          clientButton.overwriteDarkLevel(0);
+        }
+        if(clientButton.draw() && active){
+          info.opponent = info.clients.get(i);
+          info.opponent.client.write("S!\n");
+          int opponentID = info.opponent.id;
+          info.clients.forEach((clientData) -> {
+            if(clientData.id != opponentID && clientData.active){
+              clientData.client.write("D!\n");
+              clientData.client.stop();
+              clientData.active = false;
+              println("Dissconnect client. ID: " + clientData.id);
+            }
+          });
+          Poker.this.game = new Game(info);
+          info.mode = 4;
+        }
       }
       else{
         fill(Color.white);
@@ -56,6 +78,13 @@ class CreateRoom {
       }
     }
 
+    for(int i = 0; i < numOfClients; i++){
+      ClientData checkedClientData = info.clients.get(i);
+      if(!checkedClientData.client.active() && checkedClientData.active){
+        checkedClientData.active = false;
+        println("Dissconnect client. ID: " + checkedClientData.id);
+      }
+    }
   }
 }
 

@@ -13,6 +13,7 @@ class Info {
   int id;
   boolean isHost = false;
   boolean isClient = false;
+  ClientData opponent;
   List<ClientData> clients = new ArrayList<ClientData>();
 
   Info(int windowWidth, int windowHeight){

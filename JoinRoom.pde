@@ -9,6 +9,7 @@ class JoinRoom {
   private Button hostIPSetButton;
   private Client client;
   private float loadingMisa = 0.0;
+  boolean active = true;
 
   JoinRoom(Info info){
     this.info = info;
@@ -24,6 +25,9 @@ class JoinRoom {
         break;
       case 1:
         waiting();
+        break;
+      case 2:
+        dissconnected();
         break;
     }
   }
@@ -95,7 +99,22 @@ class JoinRoom {
     noStroke();
     loadingMisa += PI / 30;
     loadingMisa %= TWO_PI;
+
+    if(!client.active()){
+      active = false;
+    }
+
+    if(!active){
+      mode = 2;
+    }
   }
+
+  void dissconnected() {
+    textSize(60);
+    textAlign(CENTER, CENTER);
+    text("Dissconnected", info.centerX, info.centerY);
+  }
+
 
   void ipAdd(char addKey){
     if(hostIP.length() <= 15 && ((addKey >= '0' && addKey <= '9') || addKey == '.')){

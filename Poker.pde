@@ -28,6 +28,9 @@ void draw() {
     case 3:
       joinRoom.draw();
       break;
+    case 4:
+      game.draw();
+      break;
   }
 }
 
@@ -55,14 +58,21 @@ void clientEvent(Client client){
       case "I!":
         int id = Integer.parseInt(data.substring(2));
         info.id = id;
-
         println("id: " + id);
         break;
       case "N!":
         String name = data.substring(2);
         info.hostName = name;
-
         println("hostName: " + name);
+        break;
+      case "S!":
+        println("Start Game");
+        Poker.this.game = new Game(info);
+        Poker.this.info.mode = 4;
+        break;
+      case "D!":
+        joinRoom.active = false;
+        println("Dissconnected");
         break;
       case "E!":
         println("ERRROR");

@@ -10,6 +10,7 @@ SetName setName;
 StartRoom startRoom;
 CreateRoom createRoom;
 JoinRoom joinRoom;
+Game game;
 boolean unmodefirePressed = false;
 
 void unmodefirePressed(){

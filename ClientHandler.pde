@@ -11,19 +11,26 @@ class ClientHandler implements Runnable {
     while(true){
       if(client.available() >= 2){
         String data = client.readStringUntil('\n');
-        data = data.substring(0, data.length() - 1);
-        println(data);
-        if(data.substring(0, 2).equals("N!")){
-          int id = info.clients.size() + 1;
-          info.clients.add(new ClientData(client, data.substring(2), id));
-          client.write("I!" + Integer.toString(id) + "\n");
-          client.write("N!" + info.name + "\n");
+        if(data != null){
+          data = data.substring(0, data.length() - 1);
+          println(data);
+          if(data.substring(0, 2).equals("N!")){
+            int id = info.clients.size() + 1;
+            info.clients.add(new ClientData(client, data.substring(2), id));
+            client.write("I!" + Integer.toString(id) + "\n");
+            client.write("N!" + info.name + "\n");
 
-          println("Added a client\nid: " + id);
-          break;
+            println("Added a client\nid: " + id);
+            break;
+          }
+          else{
+            client.write("E!\n");
+            break;
+          }
         }
         else{
-          client.write("E!/");
+          println("Reserved null value");
+          client.write("E!\n");
           break;
         }
       }

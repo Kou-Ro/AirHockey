@@ -16,6 +16,7 @@ class Info {
   ClientData opponent;
   List<ClientData> clients = new ArrayList<ClientData>();
   Client client;
+  String position = "";
 
   Info(int windowWidth, int windowHeight){
     this.mode = 0;

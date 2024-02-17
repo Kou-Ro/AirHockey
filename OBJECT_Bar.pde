@@ -21,6 +21,11 @@ class Bar extends GameRect{
     return point;
   }
 
+  int setPoint(int point){
+    this.point = point;
+    return point;
+  }
+
   int incrementPoint(){
     point++;
     return point;

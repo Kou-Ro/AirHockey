@@ -21,7 +21,17 @@ class Pack extends GameObject{
     return this.x;
   }
 
+  float setX(float x){
+    this.x = x;
+    return this.x;
+  }
+
   float getY(){
+    return this.y;
+  }
+
+  float setY(float y){
+    this.y = y;
     return this.y;
   }
 }

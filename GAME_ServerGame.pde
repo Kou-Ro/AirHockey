@@ -40,12 +40,12 @@ class ServerGame extends Game{
   void checkWin(){
     if(barS.getPoint() >= 5){
       info.opponent.client.write("L!\n");
-      Poker.this.end = new End(info, true, Color.red);
+      AirHockey.this.end = new End(info, true, Color.red);
       info.mode = 5;
     }
     else if(barC.getPoint() >= 5){
       info.opponent.client.write("W!\n");
-      Poker.this.end = new End(info, false, Color.red);
+      AirHockey.this.end = new End(info, false, Color.red);
       info.mode = 5;
     }
   }

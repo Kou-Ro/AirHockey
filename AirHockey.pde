@@ -74,8 +74,8 @@ void clientEvent(Client client){
           break;
         case "S!":
           println("Start Game");
-          Poker.this.game = new ClientGame(info);
-          Poker.this.info.mode = 4;
+          AirHockey.this.game = new ClientGame(info);
+          AirHockey.this.info.mode = 4;
           break;
         case "D!":
           joinRoom.active = false;
@@ -85,11 +85,11 @@ void clientEvent(Client client){
           info.position = dataValue;
           break;
         case "W!":
-          Poker.this.end = new End(info, true, Color.blue);
+          AirHockey.this.end = new End(info, true, Color.blue);
           info.mode = 5;
           break;
         case "L!":
-          Poker.this.end = new End(info, false, Color.blue);
+          AirHockey.this.end = new End(info, false, Color.blue);
           info.mode = 5;
           break;
         case "T!":

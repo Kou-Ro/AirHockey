@@ -7,7 +7,7 @@ class CreateRoom {
 
   CreateRoom(Info info){
     this.info = info;
-    server = new Server(Poker.this, 8765);
+    server = new Server(AirHockey.this, 8765);
     println("CreateRoom");
     info.isHost = true;
     info.hostIP = info.ipAddress;
@@ -67,7 +67,7 @@ class CreateRoom {
               println("Dissconnect client. ID: " + clientData.id);
             }
           });
-          Poker.this.game = new ServerGame(info);
+          AirHockey.this.game = new ServerGame(info);
           info.mode = 4;
         }
       }

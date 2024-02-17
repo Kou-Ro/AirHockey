@@ -87,7 +87,7 @@
       },
       {
         "label": "Execute",
-        "command": "${workspaceFolder}/build/Poker",
+        "command": "${workspaceFolder}/build/AirHockey",
         "type": "process",
         "args": [],
         "group": {

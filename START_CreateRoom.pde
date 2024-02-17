@@ -67,7 +67,7 @@ class CreateRoom {
               println("Dissconnect client. ID: " + clientData.id);
             }
           });
-          Poker.this.game = new Game(info);
+          Poker.this.game = new ServerGame(info);
           info.mode = 4;
         }
       }

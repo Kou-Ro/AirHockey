@@ -2,6 +2,9 @@ static class Color extends PApplet {
   static int white = getColor(255, 255, 255);
   static int black = getColor(0, 0, 0);
   static int lightGray = getColor(190, 190, 190);
+  static int red = getColor(255, 0, 0);
+  static int green = getColor(0, 255, 0);
+  static int blue = getColor(0, 0, 255);
 
   static int getColor(int r, int g, int b) {
     int red = (r < 0) ? 0 : (r > 255) ? 255 : r;

@@ -15,6 +15,7 @@ class Info {
   boolean isClient = false;
   ClientData opponent;
   List<ClientData> clients = new ArrayList<ClientData>();
+  Client client;
 
   Info(int windowWidth, int windowHeight){
     this.mode = 0;

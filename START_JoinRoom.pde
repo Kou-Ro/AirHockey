@@ -39,6 +39,7 @@ class JoinRoom {
 
       info.hostIP = hostIP;
       client = new Client(Poker.this, info.hostIP, 8765);
+      info.client = client;
       println("Join Room");
       mode = 1;
     }

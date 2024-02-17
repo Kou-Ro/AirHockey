@@ -35,14 +35,15 @@ void draw() {
 }
 
 void keyPressed(){
-  unmodefirePressed();
+  keyPressCheck();
 }
 
 void keyReleased(){
-  unmodefireReleased();
+  keyReleaseCheck();
 }
 
 void serverEvent(Server server, Client client){
+  println("Server event");
   Thread clientHandlerThread = new Thread(new ClientHandler(client));
   clientHandlerThread.start();
 }
@@ -51,32 +52,37 @@ void clientEvent(Client client){
   String data = client.readStringUntil('\n');
   if(data != null){
     data = data.substring(0, data.length() - 1);
-    switch(data.substring(0, 2)){
+    String dataHead = data.substring(0, 2);
+    String dataValue = data.substring(2);
+    switch(dataHead){
       case "N?":
         client.write("N!" + (info.name != null ? info.name : "NULL") + "\n");
         break;
       case "I!":
-        int id = Integer.parseInt(data.substring(2));
+        int id = Integer.parseInt(dataValue);
         info.id = id;
         println("id: " + id);
         break;
       case "N!":
-        String name = data.substring(2);
+        String name = dataValue;
         info.hostName = name;
         println("hostName: " + name);
         break;
       case "S!":
         println("Start Game");
-        Poker.this.game = new Game(info);
+        Poker.this.game = new ClientGame(info);
         Poker.this.info.mode = 4;
         break;
       case "D!":
         joinRoom.active = false;
         println("Dissconnected");
         break;
+      case "T!":
+        println(dataValue);
+        break;
       case "E!":
         println("ERRROR");
-        exit();
+        break;
     }
   }
 }

@@ -1,5 +1,5 @@
 class ClientHandler implements Runnable {
-  Client client;
+  private Client client;
 
   ClientHandler(Client client){
     this.client = client;
@@ -13,7 +13,6 @@ class ClientHandler implements Runnable {
         String data = client.readStringUntil('\n');
         if(data != null){
           data = data.substring(0, data.length() - 1);
-          println(data);
           if(data.substring(0, 2).equals("N!")){
             int id = info.clients.size() + 1;
             info.clients.add(new ClientData(client, data.substring(2), id));

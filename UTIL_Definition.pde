@@ -11,14 +11,18 @@ StartRoom startRoom;
 CreateRoom createRoom;
 JoinRoom joinRoom;
 Game game;
-boolean unmodefirePressed = false;
 
-void unmodefirePressed(){
+boolean unmodefirePressed = false;
+boolean updownPressed = false;
+void keyPressCheck(){
   if(key >= 0 && key <= 127){
     unmodefirePressed = true;
   }
+  else if(keyCode == UP || keyCode == DOWN){
+    updownPressed = true;
+  }
 }
-
-void unmodefireReleased(){
+void keyReleaseCheck(){
   unmodefirePressed = false;
+  updownPressed = false;
 }

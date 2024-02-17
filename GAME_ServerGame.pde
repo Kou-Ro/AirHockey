@@ -1,6 +1,7 @@
 class ServerGame extends Game{
   ServerGame(Info info){
     super(info);
+    pack = new ServerPack(info, info.centerX, info.centerY, barS, barC, goalS, goalC);
   }
 
   void procs(){

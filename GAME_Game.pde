@@ -14,7 +14,6 @@ abstract class Game {
     this.barC = new Bar(info, info.windowWidth - 100, info.centerY, Color.blue);
     this.goalC = new Goal(info, 0, info.centerY, Color.red);
     this.goalS = new Goal(info, info.windowWidth, info.centerY, Color.blue);
-    this.pack = new Pack(info, info.centerX, info.centerY, barS, barC, goalS, goalC);
   }
 
   abstract void procs();

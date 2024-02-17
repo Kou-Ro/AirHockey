@@ -11,8 +11,8 @@ abstract class Game {
   Game(Info info){
     this.info = info;
     this.pack = new Pack(info, 0, 0);
-    this.barS = new Bar(info, 30, info.centerY, Color.red);
-    this.barC = new Bar(info, info.windowWidth - 30, info.centerY, Color.blue);
+    this.barS = new Bar(info, 50, info.centerY, Color.red);
+    this.barC = new Bar(info, info.windowWidth - 50, info.centerY, Color.blue);
     this.goalC = new Goal(info, 0, info.centerY, Color.red);
     this.goalS = new Goal(info, info.windowWidth, info.centerY, Color.blue);
   }

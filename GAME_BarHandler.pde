@@ -13,7 +13,6 @@ class BarHandler implements Runnable{
       int availableCount = client.available();
       if(availableCount >= 4){
         String data = client.readStringUntil('\n');
-        //println("Available >= 4 : " + data);
         if(data != null){
           data = data.substring(0, data.length() - 1);
           String dataHead = data.substring(0,2);

@@ -1,6 +1,6 @@
 class ServerPack extends Pack{
   private Info info;
-  private float spead = 10;
+  private float spead = 5;
   private float angle = random(-QUARTER_PI, QUARTER_PI) + (int)random(2) * PI;
   private Bar barS;
   private Bar barC;

@@ -29,7 +29,7 @@ class SetName{
 
     if(unmodefirePressed && key == pressedKey){
       sameKeyCount++;
-      if(sameKeyCount > 30 && sameKeyCount % 3 == 0){
+      if(sameKeyCount > 60 && sameKeyCount % 5 == 0){
         nameAdd(key);
       }
     }

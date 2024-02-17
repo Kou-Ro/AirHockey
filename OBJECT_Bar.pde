@@ -7,13 +7,13 @@ class Bar extends GameRect{
 
   void up(){
    if(y > height / 2){
-      y -= 30;
+      y -= 15;
     }
   }
 
   void down(){
     if(y < info.windowHeight - height / 2){
-      y += 30;
+      y += 15;
     }
   }
 

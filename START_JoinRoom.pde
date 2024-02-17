@@ -53,7 +53,7 @@ class JoinRoom {
     if(unmodefirePressed && key == pressedKey){
       sameKeyCount++;
 
-      if(sameKeyCount > 30 && sameKeyCount % 3 == 0){
+      if(sameKeyCount > 60 && sameKeyCount % 5 == 0){
         ipAdd(key);
       }
     }
@@ -101,7 +101,7 @@ class JoinRoom {
     arc(info.centerX, info.centerY + 150, 100, 100, loadingMisa, loadingMisa + PI / 5, OPEN);
     fill(Color.white);
     noStroke();
-    loadingMisa += PI / 30;
+    loadingMisa += PI / 60;
     loadingMisa %= TWO_PI;
 
     if(!client.active()){

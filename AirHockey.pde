@@ -6,7 +6,7 @@ void settings() {
 }
 
 void setup() {
-  frameRate(60);
+  frameRate(120);
   info = new Info(windowWidth, windowHeight);
   setName = new SetName(info);
 }

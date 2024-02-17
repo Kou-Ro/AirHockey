@@ -34,7 +34,7 @@ class ServerPack extends Pack{
     goalH = goalS.getHeight();
     if(x <= r && y >= info.centerY - goalH / 2 && y <= info.centerY + goalH / 2){
       barC.incrementPoint();
-      angle = random(TWO_PI);
+      angle = random(-QUARTER_PI, QUARTER_PI) + (int)random(2) * PI;
       x = info.centerX;
       y = info.centerY;
     }
@@ -42,7 +42,7 @@ class ServerPack extends Pack{
     goalH = goalC.getHeight();
     if(x >= info.windowWidth - r && y >= info.centerY - goalH / 2 && y <= info.centerY + goalH / 2){
       barS.incrementPoint();
-      angle = random(TWO_PI);
+      angle = random(-QUARTER_PI, QUARTER_PI) + (int)random(2) * PI;
       x = info.centerX;
       y = info.centerY;
     }

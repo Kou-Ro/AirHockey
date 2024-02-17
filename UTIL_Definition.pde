@@ -11,6 +11,7 @@ StartRoom startRoom;
 CreateRoom createRoom;
 JoinRoom joinRoom;
 Game game;
+End end;
 
 boolean unmodefirePressed = false;
 boolean updownPressed = false;

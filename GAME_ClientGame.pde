@@ -5,7 +5,7 @@ class ClientGame extends Game{
   }
 
   void procs(){
-    String position = position;
+    String position = info.position;
     if(position != null && position != ""){
       String[] positions = position.split(":");
 

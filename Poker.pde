@@ -31,6 +31,9 @@ void draw() {
     case 4:
       game.draw();
       break;
+    case 5:
+      end.draw();
+      break;
   }
 }
 
@@ -80,6 +83,14 @@ void clientEvent(Client client){
           break;
         case "P!":
           info.position = dataValue;
+          break;
+        case "W!":
+          Poker.this.end = new End(info, true, Color.blue);
+          info.mode = 5;
+          break;
+        case "L!":
+          Poker.this.end = new End(info, false, Color.blue);
+          info.mode = 5;
           break;
         case "T!":
           println(dataValue);

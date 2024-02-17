@@ -30,6 +30,13 @@ abstract class Game {
     goalS.draw();
     goalC.draw();
     pack.draw();
+
+    textSize(80);
+    textAlign(CENTER, CENTER);
+    fill(Color.red);
+    text(barS.getPoint(), info.centerX / 2, info.centerY);
+    fill(Color.blue);
+    text(barC.getPoint(), (info.centerX / 2) * 3, info.centerY);
   }
 
   void barMove(){

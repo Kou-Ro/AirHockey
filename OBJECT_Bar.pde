@@ -16,4 +16,13 @@ class Bar extends GameRect{
       y += 30;
     }
   }
+
+  int getPoint(){
+    return point;
+  }
+
+  int incrementPoint(){
+    point++;
+    return point;
+  }
 }

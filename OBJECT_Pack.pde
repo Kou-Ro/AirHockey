@@ -43,7 +43,7 @@ class Pack extends GameObject{
 
     goalH = goalS.getHeight();
     if(x <= r && y >= info.centerY - goalH / 2 && y <= info.centerY + goalH / 2){
-      barS.point++;
+      barC.incrementPoint();
       angle = random(TWO_PI);
       x = info.centerX;
       y = info.centerY;
@@ -51,7 +51,7 @@ class Pack extends GameObject{
 
     goalH = goalC.getHeight();
     if(x >= info.windowWidth - r && y >= info.centerY - goalH / 2 && y <= info.centerY + goalH / 2){
-      barC.point++;
+      barS.incrementPoint();
       angle = random(TWO_PI);
       x = info.centerX;
       y = info.centerY;

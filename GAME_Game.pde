@@ -1,20 +1,20 @@
 abstract class Game {
   protected Info info;
-  protected Pack pack;
   protected Bar barS;
   protected Bar barC;
   protected Goal goalS;
   protected Goal goalC;
   protected int pressedKeyCode = -1;
   protected char sameKeyCount = 0;
+  protected Pack pack;
 
   Game(Info info){
     this.info = info;
-    this.pack = new Pack(info, 0, 0);
-    this.barS = new Bar(info, 50, info.centerY, Color.red);
-    this.barC = new Bar(info, info.windowWidth - 50, info.centerY, Color.blue);
+    this.barS = new Bar(info, 100, info.centerY, Color.red);
+    this.barC = new Bar(info, info.windowWidth - 100, info.centerY, Color.blue);
     this.goalC = new Goal(info, 0, info.centerY, Color.red);
     this.goalS = new Goal(info, info.windowWidth, info.centerY, Color.blue);
+    this.pack = new Pack(info, info.centerX, info.centerY, barS, barC, goalS, goalC);
   }
 
   abstract void procs();
@@ -25,11 +25,11 @@ abstract class Game {
     procs();
     barMove();
 
-    pack.draw();
     barS.draw();
     barC.draw();
     goalS.draw();
     goalC.draw();
+    pack.draw();
   }
 
   void barMove(){

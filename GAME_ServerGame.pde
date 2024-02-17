@@ -1,11 +1,14 @@
 class ServerGame extends Game{
+  private Thread barHandler;
+
   ServerGame(Info info){
     super(info);
     pack = new ServerPack(info, info.centerX, info.centerY, barS, barC, goalS, goalC);
+    barHandler = new Thread(new BarHandler(info, barC));
+    barHandler.start();
   }
 
   void procs(){
-    barRequest();
     positionWrite();
     checkWin();
   }
@@ -16,11 +19,6 @@ class ServerGame extends Game{
 
   void downMove(){
     barS.down();
-  }
-
-  void barRequest(){
-    Thread barHandler = new Thread(new BarHandler(info, barC));
-    barHandler.start();
   }
 
   void positionWrite(){

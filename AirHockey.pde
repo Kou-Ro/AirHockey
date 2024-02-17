@@ -86,10 +86,12 @@ void clientEvent(Client client){
           break;
         case "W!":
           AirHockey.this.end = new End(info, true, Color.blue);
+          client.write("K!\n");
           info.mode = 5;
           break;
         case "L!":
           AirHockey.this.end = new End(info, false, Color.blue);
+          client.write("K!\n");
           info.mode = 5;
           break;
         case "T!":

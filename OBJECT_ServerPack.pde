@@ -64,12 +64,16 @@ class ServerPack extends Pack{
     float barW = bar.getWidth();
     float barH = bar.getHeight();
 
-    if(x <= barX + barW / 2 + r && x >= barX - barW / 2 - r && y < barY + barH / 2 + r && y > barY - barH / 2 - r){
-      angle = PI - angle;
-    }
+    float distX = x - Math.max(barX - barW / 2, Math.min(barX + barW / 2, x));
+    float distY = y - Math.max(barY - barH / 2, Math.min(barY + barH / 2, y));
 
-    if(y <= barY + barH / 2 + r && y >= barY - barH / 2 - r && x < barX + barW / 2 + r && x > barX - barW / 2 - r){
-      angle = TWO_PI - angle;
+    if(Math.pow(distX, 2) + Math.pow(distY, 2) <= Math.pow(r, 2)){
+      if(distX >= distY){
+        angle = PI - angle;
+      }
+      else{
+        angle = TWO_PI - angle;
+      }
     }
   }
 }

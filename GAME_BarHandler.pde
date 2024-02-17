@@ -27,6 +27,8 @@ class BarHandler implements Runnable{
                 barC.down();
               }
               break;
+            case "K!":
+              return;
             case "T!":
               println(dataValue);
               break;

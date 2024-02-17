@@ -86,11 +86,14 @@ class JoinRoom {
 
     textSize(60);
     textAlign(RIGHT, CENTER);
-    text(info.name, info.centerX - 70, info.centerY);
+    fill(Color.red);
+    text(info.hostName, info.centerX - 100, info.centerY);
     textAlign(CENTER, CENTER);
+    fill(Color.white);
     text("VS", info.centerX, info.centerY);
     textAlign(LEFT, CENTER);
-    text(info.hostName, info.centerX + 70, info.centerY);
+    fill(Color.blue);
+    text(info.name, info.centerX + 100, info.centerY);
 
     strokeWeight(10);
     stroke(Color.white);

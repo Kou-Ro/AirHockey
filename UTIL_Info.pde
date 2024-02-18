@@ -8,14 +8,14 @@ class Info {
   boolean initClient = false;
   String ipAddress = "";
   String name = "";
-  String hostIP = "";
-  String hostName = "";
+  String serverIP = "";
+  String serverName = "";
   int id;
-  boolean isHost = false;
+  boolean isServer = false;
   boolean isClient = false;
   ClientData opponent;
   List<ClientData> clients = new ArrayList<ClientData>();
-  Client client;
+  GameClient gameClient;
   String position = "";
 
   Info(int windowWidth, int windowHeight){

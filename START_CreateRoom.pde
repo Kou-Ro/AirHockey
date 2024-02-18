@@ -1,6 +1,5 @@
 class CreateRoom {
   private Server server;
-  private Client client;
   private Info info;
   private Button[] clientButtons = new Button[5];
   Boolean valid = false;
@@ -9,9 +8,9 @@ class CreateRoom {
     this.info = info;
     server = new Server(AirHockey.this, 8765);
     println("CreateRoom");
-    info.isHost = true;
-    info.hostIP = info.ipAddress;
-    info.hostName = info.name;
+    info.isServer = true;
+    info.serverIP = info.ipAddress;
+    info.serverName = info.name;
     info.id = 0;
 
     textSize(60);
@@ -57,11 +56,12 @@ class CreateRoom {
         }
         if(clientButton.draw() && active){
           info.opponent = info.clients.get(i);
-          info.opponent.client.write("S!\n");
+          info.opponent.gameClient.send("S!");
           int opponentID = info.opponent.id;
           info.clients.forEach((clientData) -> {
             if(clientData.id != opponentID && clientData.active){
-              clientData.client.write("D!\n");
+              clientData.gameClient.send("D!");
+              clientData.gameClient.stopReceive();
               clientData.client.stop();
               clientData.active = false;
               println("Dissconnect client. ID: " + clientData.id);
@@ -82,16 +82,9 @@ class CreateRoom {
       ClientData checkedClientData = info.clients.get(i);
       if(!checkedClientData.client.active() && checkedClientData.active){
         checkedClientData.active = false;
+        checkedClientData.gameClient.stopReceive();
         println("Dissconnect client. ID: " + checkedClientData.id);
       }
     }
-  }
-}
-
-class User {
-  String ipAddress;
-
-  User(String ipAddress){
-    this.ipAddress = ipAddress;
   }
 }

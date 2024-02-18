@@ -1,11 +1,8 @@
 class ServerGame extends Game{
-  private Thread barHandler;
 
   ServerGame(Info info){
     super(info);
     pack = new ServerPack(info, info.centerX, info.centerY, barS, barC, goalS, goalC);
-    barHandler = new Thread(new BarHandler(info, barC));
-    barHandler.start();
   }
 
   void procs(){
@@ -32,19 +29,27 @@ class ServerGame extends Game{
     position += pack.getX() + ":";
     position += pack.getY() + ":";
 
-    info.opponent.client.write("P!" + position + "\n");
+    info.opponent.gameClient.send("P!" + position);
   }
 
   void checkWin(){
     if(barS.getPoint() >= 5){
-      info.opponent.client.write("L!\n");
+      info.opponent.gameClient.send("L!");
       AirHockey.this.end = new End(info, true, Color.red);
       info.mode = 5;
     }
     else if(barC.getPoint() >= 5){
-      info.opponent.client.write("W!\n");
+      info.opponent.gameClient.send("W!");
       AirHockey.this.end = new End(info, false, Color.red);
       info.mode = 5;
     }
+  }
+
+  void clientUp(){
+    barC.up();
+  }
+
+  void clientDown(){
+    barC.down();
   }
 }

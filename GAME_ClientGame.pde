@@ -23,10 +23,10 @@ class ClientGame extends Game{
   }
 
   void upMove(){
-    info.client.write("B!U\n");
+    info.gameClient.send("B!U");
   }
 
   void downMove(){
-    info.client.write("B!D\n");
+    info.gameClient.send("B!D");
   }
 }

@@ -19,6 +19,8 @@ abstract class Game {
   abstract void procs();
   abstract void upMove();
   abstract void downMove();
+  void clientUp(){}
+  void clientDown(){}
 
   void draw(){
     procs();

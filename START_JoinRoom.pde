@@ -1,20 +1,20 @@
 class JoinRoom {
   private Info info;
-  private String hostIP = "";
+  private String serverIP = "";
   private String name = "";
   private char pressedKey = '\0';
   private char sameKeyCount = 0;
   private int mode = 0; // 0: Set name 1: set IP 2: waiting
   private Button nameSetButton;
-  private Button hostIPSetButton;
-  private Client client;
+  private Button serverIPSetButton;
+  private GameClient gameClient;
   private float loadingMisa = 0.0;
   boolean active = true;
 
   JoinRoom(Info info){
     this.info = info;
     this.nameSetButton = new Button("Next", info.centerX, info.centerY + 100, Color.white, Color.black);
-    this.hostIPSetButton = new Button("Next", info.centerX, info.centerY + 100, Color.white, Color.black);
+    this.serverIPSetButton = new Button("Next", info.centerX, info.centerY + 100, Color.white, Color.black);
     info.isClient = true;
   }
 
@@ -33,13 +33,14 @@ class JoinRoom {
   }
 
   void setIP(){
-    if(hostIPSetButton.draw() || (unmodefirePressed && key == ENTER && key != pressedKey)){
+    if(serverIPSetButton.draw() || (unmodefirePressed && key == ENTER && key != pressedKey)){
       sameKeyCount = 0;
       pressedKey = key;
 
-      info.hostIP = hostIP;
-      client = new Client(AirHockey.this, info.hostIP, 8765);
-      info.client = client;
+      info.serverIP = serverIP;
+      gameClient = new GameClient(info, new Client (AirHockey.this, info.serverIP, 8765));
+      info.gameClient = gameClient;
+      gameClient.startReceive();
       println("Join Room");
       mode = 1;
     }
@@ -74,7 +75,7 @@ class JoinRoom {
     rect(info.centerX, info.centerY, 400, BoxHeight);
 
     fill(Color.black);
-    text(hostIP, info.centerX, info.centerY);
+    text(serverIP, info.centerX, info.centerY);
   }
 
   void waiting(){
@@ -87,7 +88,7 @@ class JoinRoom {
     textSize(60);
     textAlign(RIGHT, CENTER);
     fill(Color.red);
-    text(info.hostName, info.centerX - 100, info.centerY);
+    text(info.serverName, info.centerX - 100, info.centerY);
     textAlign(CENTER, CENTER);
     fill(Color.white);
     text("VS", info.centerX, info.centerY);
@@ -104,7 +105,8 @@ class JoinRoom {
     loadingMisa += PI / 60;
     loadingMisa %= TWO_PI;
 
-    if(!client.active()){
+    if(!gameClient.getClient().active()){
+      gameClient.stopReceive();
       active = false;
     }
 
@@ -121,11 +123,11 @@ class JoinRoom {
 
 
   void ipAdd(char addKey){
-    if(hostIP.length() <= 15 && ((addKey >= '0' && addKey <= '9') || addKey == '.')){
-      hostIP += addKey;
+    if(serverIP.length() <= 15 && ((addKey >= '0' && addKey <= '9') || addKey == '.')){
+      serverIP += addKey;
     }
-    else if(addKey == '\b' && hostIP.length() > 0){
-      hostIP = hostIP.substring(0, hostIP.length() - 1);
+    else if(addKey == '\b' && serverIP.length() > 0){
+      serverIP = serverIP.substring(0, serverIP.length() - 1);
     }
   }
 }

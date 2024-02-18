@@ -2,7 +2,7 @@ class ServerGame extends Game{
 
   ServerGame(Info info){
     super(info);
-    pack = new ServerPack(info, info.centerX, info.centerY, barS, barC, goalS, goalC);
+    pack = new ServerPack(info, info.centerX, info.centerY, paddleS, paddleC, goalS, goalC);
   }
 
   void procs(){
@@ -11,21 +11,21 @@ class ServerGame extends Game{
   }
 
   void upMove(){
-    barS.up();
+    paddleS.up();
   }
 
   void downMove(){
-    barS.down();
+    paddleS.down();
   }
 
   void positionWrite(){
     String position = "";
-    position += barS.getX() + ":";
-    position += barS.getY() + ":";
-    position += barS.getPoint() + ":";
-    position += barC.getX() + ":";
-    position += barC.getY() + ":";
-    position += barC.getPoint() + ":";
+    position += paddleS.getX() + ":";
+    position += paddleS.getY() + ":";
+    position += paddleS.getPoint() + ":";
+    position += paddleC.getX() + ":";
+    position += paddleC.getY() + ":";
+    position += paddleC.getPoint() + ":";
     position += pack.getX() + ":";
     position += pack.getY() + ":";
 
@@ -33,12 +33,12 @@ class ServerGame extends Game{
   }
 
   void checkWin(){
-    if(barS.getPoint() >= 5){
+    if(paddleS.getPoint() >= 5){
       info.opponent.gameClient.send("L!");
       AirHockey.this.end = new End(info, true, Color.red);
       info.mode = 5;
     }
-    else if(barC.getPoint() >= 5){
+    else if(paddleC.getPoint() >= 5){
       info.opponent.gameClient.send("W!");
       AirHockey.this.end = new End(info, false, Color.red);
       info.mode = 5;
@@ -46,10 +46,10 @@ class ServerGame extends Game{
   }
 
   void clientUp(){
-    barC.up();
+    paddleC.up();
   }
 
   void clientDown(){
-    barC.down();
+    paddleC.down();
   }
 }

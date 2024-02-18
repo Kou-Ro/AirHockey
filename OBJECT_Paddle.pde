@@ -1,7 +1,7 @@
-class Bar extends GameRect{
+class Paddle extends GameRect{
   private int point = 0;
 
-  Bar(Info info, float x, float y, int c) {
+  Paddle(Info info, float x, float y, int c) {
     super(info, x, y, 15, 100, c);
   }
 

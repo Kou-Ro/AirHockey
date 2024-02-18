@@ -1,7 +1,7 @@
 abstract class Game {
   protected Info info;
-  protected Bar barS;
-  protected Bar barC;
+  protected Paddle paddleS;
+  protected Paddle paddleC;
   protected Goal goalS;
   protected Goal goalC;
   protected int pressedKeyCode = -1;
@@ -10,8 +10,8 @@ abstract class Game {
 
   Game(Info info){
     this.info = info;
-    this.barS = new Bar(info, 100, info.centerY, Color.red);
-    this.barC = new Bar(info, info.windowWidth - 100, info.centerY, Color.blue);
+    this.paddleS = new Paddle(info, 100, info.centerY, Color.red);
+    this.paddleC = new Paddle(info, info.windowWidth - 100, info.centerY, Color.blue);
     this.goalC = new Goal(info, 0, info.centerY, Color.red);
     this.goalS = new Goal(info, info.windowWidth, info.centerY, Color.blue);
   }
@@ -24,10 +24,10 @@ abstract class Game {
 
   void draw(){
     procs();
-    barMove();
+    paddleMove();
 
-    barS.draw();
-    barC.draw();
+    paddleS.draw();
+    paddleC.draw();
     goalS.draw();
     goalC.draw();
     pack.draw();
@@ -35,12 +35,12 @@ abstract class Game {
     textSize(80);
     textAlign(CENTER, CENTER);
     fill(Color.red);
-    text(barS.getPoint(), info.centerX / 2, info.centerY);
+    text(paddleS.getPoint(), info.centerX / 2, info.centerY);
     fill(Color.blue);
-    text(barC.getPoint(), (info.centerX / 2) * 3, info.centerY);
+    text(paddleC.getPoint(), (info.centerX / 2) * 3, info.centerY);
   }
 
-  void barMove(){
+  void paddleMove(){
     if(updownPressed && keyCode != pressedKeyCode){
       if(keyCode == UP){
         upMove();

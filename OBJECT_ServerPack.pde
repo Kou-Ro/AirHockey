@@ -2,16 +2,16 @@ class ServerPack extends Pack{
   private Info info;
   private float spead = 5;
   private float angle = random(-QUARTER_PI, QUARTER_PI) + (int)random(2) * PI;
-  private Bar barS;
-  private Bar barC;
+  private Paddle paddleS;
+  private Paddle paddleC;
   private Goal goalS;
   private Goal goalC;
 
-  ServerPack(Info info, float x, float y, Bar barS, Bar barC, Goal goalS, Goal goalC){
+  ServerPack(Info info, float x, float y, Paddle paddleS, Paddle paddleC, Goal goalS, Goal goalC){
     super(x, y);
     this.info = info;
-    this.barS = barS;
-    this.barC = barC;
+    this.paddleS = paddleS;
+    this.paddleC = paddleC;
     this.goalS = goalS;
     this.goalC = goalC;
   }
@@ -24,8 +24,8 @@ class ServerPack extends Pack{
 
     goalCheck();
     wallReflection();
-    barReflection(barS);
-    barReflection(barC);
+    paddleReflection(paddleS);
+    paddleReflection(paddleC);
   }
 
   void goalCheck(){
@@ -33,7 +33,7 @@ class ServerPack extends Pack{
 
     goalH = goalS.getHeight();
     if(x <= r && y >= info.centerY - goalH / 2 && y <= info.centerY + goalH / 2){
-      barC.incrementPoint();
+      paddleC.incrementPoint();
       angle = random(-QUARTER_PI, QUARTER_PI) + (int)random(2) * PI;
       x = info.centerX;
       y = info.centerY;
@@ -41,7 +41,7 @@ class ServerPack extends Pack{
 
     goalH = goalC.getHeight();
     if(x >= info.windowWidth - r && y >= info.centerY - goalH / 2 && y <= info.centerY + goalH / 2){
-      barS.incrementPoint();
+      paddleS.incrementPoint();
       angle = random(-QUARTER_PI, QUARTER_PI) + (int)random(2) * PI;
       x = info.centerX;
       y = info.centerY;
@@ -58,14 +58,14 @@ class ServerPack extends Pack{
     }
   }
 
-  void barReflection(Bar bar){
-    float barX = bar.getX();
-    float barY = bar.getY();
-    float barW = bar.getWidth();
-    float barH = bar.getHeight();
+  void paddleReflection(Paddle paddle){
+    float paddleX = paddle.getX();
+    float paddleY = paddle.getY();
+    float paddleW = paddle.getWidth();
+    float paddleH = paddle.getHeight();
 
-    float distX = x - Math.max(barX - barW / 2, Math.min(barX + barW / 2, x));
-    float distY = y - Math.max(barY - barH / 2, Math.min(barY + barH / 2, y));
+    float distX = x - Math.max(paddleX - paddleW / 2, Math.min(paddleX + paddleW / 2, x));
+    float distY = y - Math.max(paddleY - paddleH / 2, Math.min(paddleY + paddleH / 2, y));
 
     if(Math.pow(distX, 2) + Math.pow(distY, 2) <= Math.pow(r, 2)){
       if(distX >= distY){

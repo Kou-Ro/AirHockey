@@ -54,7 +54,7 @@ class ServerPack extends Pack{
     }
 
     if(y <= r || y >= info.windowHeight - r){
-      angle = TWO_PI - angle;
+      angle = - angle;
     }
   }
 
@@ -72,7 +72,7 @@ class ServerPack extends Pack{
         angle = PI - angle;
       }
       else{
-        angle = TWO_PI - angle;
+        angle = - angle;
       }
     }
   }

@@ -26,18 +26,18 @@ abstract class Game {
     procs();
     paddleMove();
 
-    paddleS.draw();
-    paddleC.draw();
-    goalS.draw();
-    goalC.draw();
-    pack.draw();
-
     textSize(80);
     textAlign(CENTER, CENTER);
     fill(Color.red);
     text(paddleS.getPoint(), info.centerX / 2, info.centerY);
     fill(Color.blue);
     text(paddleC.getPoint(), (info.centerX / 2) * 3, info.centerY);
+
+    paddleS.draw();
+    paddleC.draw();
+    goalS.draw();
+    goalC.draw();
+    pack.draw();
   }
 
   void paddleMove(){

@@ -5,7 +5,6 @@ class JoinRoom {
   private char pressedKey = '\0';
   private char sameKeyCount = 0;
   private int mode = 0; // 0: Set name 1: set IP 2: waiting
-  private Button nameSetButton;
   private Button serverIPSetButton;
   private GameClient gameClient;
   private float loadingMisa = 0.0;
@@ -13,7 +12,6 @@ class JoinRoom {
 
   JoinRoom(Info info){
     this.info = info;
-    this.nameSetButton = new Button("Next", info.centerX, info.centerY + 100, Color.white, Color.black);
     this.serverIPSetButton = new Button("Next", info.centerX, info.centerY + 100, Color.white, Color.black);
     info.isClient = true;
   }
